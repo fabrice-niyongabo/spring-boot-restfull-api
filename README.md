@@ -8,12 +8,9 @@ This is a simple Spring Boot RESTful API project that demonstrates CRUD operatio
 
 - [Prerequisites](#prerequisites)
 - [Getting Started](#getting-started)
-- [Project Structure](#project-structure)
 - [Configuration](#configuration)
 - [API Endpoints](#api-endpoints)
 - [Build and Run](#build-and-run)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Prerequisites
 
@@ -28,31 +25,35 @@ Before you begin, ensure you have met the following requirements:
 
 1. Clone this repository:
 
-   ```sh
+   ```
    git clone https://github.com/Wanziro/spring-boot-restfull-api.git
+   ```
    
 Configure MySQL database settings in src/main/resources/application.properties:
 
+```
 spring.datasource.url=jdbc:mysql://localhost:3306/your_database_name
 spring.datasource.username=your_database_username
 spring.datasource.password=your_database_password
+```
+
 
 Configuration
-Additional configuration can be done in the application.properties file. You can set various properties like server port, logging levels, etc.
+Additional configuration can be done in the `application.properties` file. You can set various properties like server port, logging levels, etc.
 
 ## API Endpoints
 This API exposes the following endpoints:
 
-GET /api/users: Retrieve a list of users
-GET /api/user/{id}: Retrieve details of a specific user
-POST /api/user: Create a new item
-PUT /api/user/{id}: Update an existing user
-DELETE /api/user/{id}: Delete a user
+- GET /api/users: Retrieve a list of users
+- GET /api/user/{id}: Retrieve details of a specific user
+- POST /api/user: Create a new item
+- PUT /api/user/{id}: Update an existing user
+- DELETE /api/user/{id}: Delete a user
 
 ## Build and Run
 Build the project using Maven:
-mvn clean install
+`mvn clean install`
 
 Run the application:
-java -jar target/spring-boot-restful-api.jar
+`java -jar target/spring-boot-restful-api.jar`
 
