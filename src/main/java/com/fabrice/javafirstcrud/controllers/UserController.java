@@ -1,12 +1,11 @@
 package com.fabrice.javafirstcrud.controllers;
 
+import com.fabrice.javafirstcrud.exceptions.UserNotFoundException;
 import com.fabrice.javafirstcrud.models.User;
 import com.fabrice.javafirstcrud.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,4 +27,12 @@ public class UserController {
     List<User> getAllUsers() {
         return userRepository.findAll();
     }
+
+    //Getting single user
+    @GetMapping("/user/{id}")
+    // @ResponseStatus(HttpStatus.CREATED) //in case you want to change the status code
+    User getSingleUser(@PathVariable long id) { // Long is the datatype of the param (id)
+        return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
+    }
+
 }
