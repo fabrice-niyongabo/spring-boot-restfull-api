@@ -46,7 +46,7 @@ This API exposes the following endpoints:
 
 - GET /api/users: Retrieve a list of users
 - GET /api/user/{id}: Retrieve details of a specific user
-- POST /api/user: Create a new item
+- POST /api/user: Create a new user
 - PUT /api/user/{id}: Update an existing user
 - DELETE /api/user/{id}: Delete a user
 
