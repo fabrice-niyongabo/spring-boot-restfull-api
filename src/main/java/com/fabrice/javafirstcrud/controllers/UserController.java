@@ -19,26 +19,26 @@ public class UserController {
     private UserRepository userRepository;
 
     //API to create new user
-    @PostMapping("/user")
+    @PostMapping("/api/user")
     User saveNewUser(@RequestBody User newUser) { //return type is User obj for this method
         return userRepository.save(newUser);
     }
 
     //API to get all users
-    @GetMapping("/users")
+    @GetMapping("/api/users")
     List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
     //Getting single user
-    @GetMapping("/user/{id}")
+    @GetMapping("/api/user/{id}")
     // @ResponseStatus(HttpStatus.CREATED) //in case you want to change the status code
     User getSingleUser(@PathVariable long id) { // Long is the datatype of the param (id)
         return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
     }
 
     //edit user
-    @PutMapping("/user/{id}")
+    @PutMapping("/api/user/{id}")
     User updateUser(@PathVariable long id, @RequestBody User updatedUser) {
         return userRepository.findById(id).map(user -> {
             user.setEmail(updatedUser.getEmail());
@@ -48,7 +48,7 @@ public class UserController {
         }).orElseThrow(() -> new UserNotFoundException(id));
     }
 
-    @DeleteMapping("user/{id}")
+    @DeleteMapping("/api/user/{id}")
     Map<String, String> deleteUser(@PathVariable long id) {
         //check if user already exists
         if (userRepository.existsById(id)) {
