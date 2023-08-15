@@ -50,10 +50,16 @@ public class UserController {
 
     @DeleteMapping("user/{id}")
     Map<String, String> deleteUser(@PathVariable long id) {
-        userRepository.deleteById(id);
-        Map<String, String> response = new HashMap<>();
-        response.put("message", "user " + id + " has been deleted successfully");
-        return response;
+        //check if user already exists
+        if (userRepository.existsById(id)) {
+            userRepository.deleteById(id);
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "user " + id + " has been deleted successfully");
+            return response;
+        } else {
+            throw new UserNotFoundException(id);
+        }
+
     }
 
 }
