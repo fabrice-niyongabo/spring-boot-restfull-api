@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController //anotation which adds rest api methods to this controller
 public class UserController {
@@ -44,6 +46,14 @@ public class UserController {
             user.setUsername(updatedUser.getUsername());
             return userRepository.save(user);
         }).orElseThrow(() -> new UserNotFoundException(id));
+    }
+
+    @DeleteMapping("user/{id}")
+    Map<String, String> deleteUser(@PathVariable long id) {
+        userRepository.deleteById(id);
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "user " + id + " has been deleted successfully");
+        return response;
     }
 
 }
