@@ -3,9 +3,11 @@ package com.fabrice.javafirstcrud.models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 //this class is our user model
 @Entity //help us to create the table whenever we are connected to the DB
+@Table(name = "users")
 public class User {
     //columns for our table
     //specifying the primary key
